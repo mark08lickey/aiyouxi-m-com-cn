@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mark08lickey.github.io/aiyouxi-m-com-cn/sitemap.xml
