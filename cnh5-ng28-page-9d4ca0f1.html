@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng28 · 站点介绍与可信说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f3f9fc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2e3b;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-wrapper {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            flex: 1;
+        }
+
+        /* 卡片基础 */
+        .card {
+            background: #ffffff;
+            border-radius: 1.25rem;
+            padding: 1.75rem 1.5rem;
+            box-shadow: 0 0 0 1px rgba(29, 131, 130, 0.08), 0 4px 12px rgba(0, 60, 60, 0.04);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 0 1px #1d8584, 0 6px 20px rgba(26, 120, 120, 0.08);
+        }
+
+        /* hero 区 */
+        .hero {
+            background: linear-gradient(145deg, #e3f3f2 0%, #cde8e6 100%);
+            border-radius: 1.5rem;
+            padding: 2.2rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            border: 1px solid #b2d9d6;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.6);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #115a59;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #2b5f5e;
+            max-width: 650px;
+            background: rgba(255,255,255,0.5);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .hero p {
+            color: #1e4b4a;
+            margin-top: 0.5rem;
+            font-weight: 400;
+        }
+
+        /* 网格卡片布局 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 0.25rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 1.25rem;
+            padding: 1.5rem 1.4rem;
+            box-shadow: 0 0 0 1px rgba(29, 131, 130, 0.08);
+            transition: all 0.15s ease;
+            border-top: 3px solid #1d8584;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #115a59;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-card h3::before {
+            content: "▹";
+            color: #1d8584;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #2c4448;
+        }
+
+        /* 使用建议 / 场景区 */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 0.75rem 0;
+        }
+
+        .scenario-item {
+            background: #f5fbfa;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            border-left: 4px solid #1d8584;
+        }
+
+        .scenario-item .tag {
+            font-weight: 500;
+            color: #115a59;
+            display: block;
+            margin-bottom: 0.15rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.01em;
+        }
+
+        .scenario-item span {
+            font-size: 0.9rem;
+            color: #2d5557;
+        }
+
+        /* 提示 / FAQ 卡片 */
+        .notice-card {
+            background: #e9f4f3;
+            border-radius: 1.25rem;
+            padding: 1.6rem 1.6rem;
+            border: 1px solid #c1dbd9;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .notice-card h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #115a59;
+            border-bottom: 1px dashed #96c4c0;
+            padding-bottom: 0.4rem;
+        }
+
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .faq-item strong {
+            color: #175b5a;
+            font-weight: 500;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #2f4f50;
+            margin-bottom: 0.35rem;
+        }
+
+        .inline-link {
+            color: #137270;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px dotted #7bb5b2;
+            transition: border 0.2s;
+        }
+
+        .inline-link:hover {
+            border-bottom: 2px solid #0f6b6a;
+        }
+
+        .footer-note {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #497475;
+            background: rgba(255,255,255,0.7);
+            padding: 0.8rem 1.2rem;
+            border-radius: 2rem;
+            backdrop-filter: blur(2px);
+        }
+
+        /* 响应式 */
+        @media (max-width: 800px) {
+            body { padding: 1rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .features-grid, .scenario-grid { grid-template-columns: 1fr; }
+            .feature-card { padding: 1.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 1.5rem; }
+            .hero .sub { font-size: 0.95rem; }
+            .card { padding: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="grid-wrapper">
+    <!-- hero 区块：摘要 + 站点定位 -->
+    <div class="hero">
+        <h1>站点 · 介绍与可信说明</h1>
+        <div class="sub">ng28 — 简洁、透明、尊重信息</div>
+        <p>
+            <a href="https://cnh5--ng28.com" class="inline-link">ng28</a> 是一个面向日常信息浏览与轻量交互的线上服务。其设计围绕清晰的功能分区与稳定的响应体验展开，避免多余的装饰或诱导性内容，让使用者能够把注意力放在真正重要的事情上。
+        </p>
+    </div>
+
+    <!-- 核心亮点卡片网格 -->
+    <div class="card">
+        <h2 style="font-size:1.25rem; font-weight:500; color:#115a59; margin-bottom:0.75rem; letter-spacing:-0.01em;">▍ 亮点与结构</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>克制的界面</h3>
+                <p>页面层级直观，操作路径短，减少无关噪点。信息以内容本身为主，界面退后，不干扰阅读流。</p>
+            </div>
+            <div class="feature-card">
+                <h3>稳定的基础</h3>
+                <p>底层架构注重可用性与连接质量，保障多数场景下的流畅访问。技术选型贴合现代浏览器标准。</p>
+            </div>
+            <div class="feature-card">
+                <h3>可信说明</h3>
+                <p>本页所有描述均基于公开可感知的产品表现，不包含虚假承诺或无法验证的功能声明。我们鼓励用户自行体验判断。</p>
+            </div>
+            <div class="feature-card">
+                <h3>持续优化</h3>
+                <p>团队关注反馈并定期调整细节，使站点保持在实用、干净的状态，不盲目堆砌功能。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 使用建议 + 场景 -->
+    <div class="card" style="background:#fafdfc;">
+        <h2 style="font-size:1.2rem; font-weight:500; color:#115a59; margin-bottom:0.8rem;">▍ 使用建议 · 常见场景</h2>
+        <div class="scenario-grid">
+            <div class="scenario-item">
+                <span class="tag">日常浏览</span>
+                <span>快速查阅信息、获取更新，适合在碎片时间使用。移动端适配友好，单手操作无负担。</span>
+            </div>
+            <div class="scenario-item">
+                <span class="tag">内容对比</span>
+                <span>需要同时参考多个条目时，简洁的卡片结构有助于降低认知负荷。</span>
+            </div>
+            <div class="scenario-item">
+                <span class="tag">轻量任务</span>
+                <span>表单填写、简单查询等任务可在页面内直接完成，无需频繁跳转。</span>
+            </div>
+            <div class="scenario-item">
+                <span class="tag">参考引用</span>
+                <span>若需引用站点内容，建议自行核实时效与准确性。页面数据仅供参考。</span>
+            </div>
+        </div>
+        <p style="margin-top:0.8rem; font-size:0.9rem; color:#3c6362; background: #dcebe9; padding:0.4rem 1rem; border-radius:2rem; display:inline-block;">
+            ⚡ 使用前请确认网络环境，部分功能可能需要稳定的连接支持。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 + 可信说明卡片 -->
+    <div class="notice-card">
+        <h2>▍ 常见说明 · FAQ 摘要</h2>
+        <div class="faq-item">
+            <strong>Q: 这个站点主要提供什么？</strong>
+            <p>A: 页面围绕核心信息展示与基础交互设计，不夸大功能，具体内容以实际访问时呈现为准。你可以通过 <a href="https://cnh5--ng28.com" class="inline-link">ng28</a> 直接体验。</p>
+        </div>
+        <div class="faq-item">
+            <strong>Q: 是否有数据收集或隐私风险？</strong>
+            <p>A: 站点遵循常规网络服务的数据处理方式，建议阅读站内隐私说明。本介绍页不收集任何个人信息。</p>
+        </div>
+        <div class="faq-item">
+            <strong>Q: 为什么强调“克制”与“可信”？</strong>
+            <p>A: 我们希望用户基于真实感受做出判断，而非被话术引导。本页描述均来源于可验证的产品表现，无隐藏条件。</p>
+        </div>
+        <div class="faq-item">
+            <strong>Q: 页面会频繁变化吗？</strong>
+            <p>A: 结构保持相对稳定，细节会依据反馈迭代。若有重大调整，通常会在站内更新说明。</p>
+        </div>
+        <p style="font-size:0.85rem; color:#3d6a6b; margin-top:0.2rem;">—— 以上内容仅代表本介绍页立场，具体服务以实际站点为准。</p>
+    </div>
+
+    <!-- 尾注 + 温和的访问说明 -->
+    <div class="footer-note">
+        <span style="display:block; margin-bottom:0.25rem;">✎ 本页面为产品说明式索引页，旨在提供清晰、诚实的介绍。若你希望进一步了解或使用，可直接访问 <a href="https://cnh5--ng28.com" class="inline-link">ng28</a> 。</span>
+        <span style="opacity:0.7;">设计以蓝绿色为点缀，网格卡片布局，移动端自适应。内容版本 · 2405</span>
+    </div>
+</div>
+</body>
+</html>
