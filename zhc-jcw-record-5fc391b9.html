@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>竞彩网 · 知识库索引</title>
+  <style>
+    /* reset & base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+      background: #faf9f6;
+      color: #1e1e1e;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      padding: 2rem 1.25rem 4rem;
+    }
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* hero 区 */
+    .hero {
+      padding: 2.5rem 0 1.8rem;
+      border-bottom: 2px solid #eae7e0;
+    }
+    .hero-title {
+      font-size: 1.9rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #1e1e1e;
+      line-height: 1.2;
+    }
+    .hero-title span {
+      background: #f0ede6;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 450;
+    }
+    .hero-sub {
+      margin-top: 0.75rem;
+      font-size: 1.05rem;
+      color: #5e5b55;
+      max-width: 34em;
+    }
+
+    /* 通用卡片模块 */
+    .section {
+      padding: 2rem 0;
+      border-bottom: 1px solid #efebe6;
+    }
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9a958c;
+      margin-bottom: 0.7rem;
+      font-weight: 500;
+    }
+    .section-heading {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #2b2a27;
+      line-height: 1.35;
+    }
+
+    .text-block p {
+      margin-bottom: 1rem;
+      color: #3a3834;
+    }
+    .text-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 目录式 list — 知识库入口感 */
+    .index-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-top: 0.2rem;
+    }
+    .index-item {
+      background: #f5f2ed;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      transition: background 0.2s ease;
+      border-left: 4px solid #d2ccc2;
+    }
+    .index-item:hover {
+      background: #ece8e0;
+    }
+    .index-item .item-title {
+      font-weight: 530;
+      font-size: 1rem;
+      color: #1e1e1e;
+      margin-bottom: 0.15rem;
+    }
+    .index-item .item-desc {
+      font-size: 0.9rem;
+      color: #5f5b54;
+      line-height: 1.5;
+    }
+
+    /* 提示区 / 信息卡片 */
+    .tip-card {
+      background: #f0eeea;
+      border-radius: 12px;
+      padding: 1.3rem 1.5rem;
+      margin: 1.2rem 0 0.5rem;
+      border: 1px solid #e3dfd7;
+    }
+    .tip-card .tip-title {
+      font-weight: 530;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tip-card .tip-title::before {
+      content: "⏺";
+      font-size: 0.9rem;
+      color: #8f897e;
+    }
+    .tip-card p {
+      color: #3d3a35;
+      font-size: 0.95rem;
+    }
+
+    /* 相关信息区 (FAQ 摘要风格) */
+    .faq-item {
+      padding: 0.85rem 0;
+      border-bottom: 1px dashed #ddd7ce;
+    }
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+    .faq-q {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      color: #2b2a27;
+    }
+    .faq-a {
+      font-size: 0.95rem;
+      color: #4e4b45;
+    }
+
+    /* 引用 / 说明 */
+    .note-box {
+      background: #ffffffd8;
+      border: 1px solid #e2ddd4;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1rem;
+    }
+
+    /* 链接样式 */
+    a {
+      color: #3d6b5e;
+      text-decoration: none;
+      border-bottom: 1px solid #cdd8d0;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    a:hover {
+      border-bottom-color: #2c5a4c;
+      color: #1e4a3e;
+    }
+
+    /* 响应式 */
+    @media (max-width: 480px) {
+      body { padding: 1.2rem 0.9rem 3rem; }
+      .hero-title { font-size: 1.6rem; }
+      .section-heading { font-size: 1.15rem; }
+      .index-item { padding: 0.85rem 1rem; }
+      .tip-card { padding: 1rem 1.2rem; }
+    }
+
+    /* 分隔微元素 */
+    .divider-dash {
+      width: 32px;
+      height: 3px;
+      background: #d2ccc2;
+      margin: 1.6rem 0 0.6rem;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 模块 -->
+  <header class="hero">
+    <h1 class="hero-title">资料索引 · <span>竞彩网</span> 知识库</h1>
+    <p class="hero-sub">围绕信息整理与结构化归档，搭建可检索、可延伸的竞彩资料入口。</p>
+  </header>
+
+  <!-- 目录感布局：资料分类 -->
+  <section class="section">
+    <div class="section-label">📁 索引目录</div>
+    <div class="index-grid">
+      <div class="index-item">
+        <div class="item-title">规则与术语</div>
+        <div class="item-desc">玩法说明、奖金计算、让球定义、无效场次处理等基础文档。</div>
+      </div>
+      <div class="index-item">
+        <div class="item-title">数据与统计</div>
+        <div class="item-desc">赔率变动记录、历史同赔、球队交锋、赛季走势等参考数据。</div>
+      </div>
+      <div class="index-item">
+        <div class="item-title">策略与笔记</div>
+        <div class="item-desc">资金管理方案、组合方式对比、常见认知偏差及应对思路。</div>
+      </div>
+      <div class="index-item">
+        <div class="item-title">工具与链接</div>
+        <div class="item-desc">计算器、即时比分、赛程日历、官方公告汇总页面。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 说明区：资料整理的角度 -->
+  <section class="section">
+    <div class="section-label">🗂️ 说明</div>
+    <div class="text-block">
+      <p>本页以知识库入口为定位，将分散在平台各处的公开信息按类别归拢。索引本身不生成预测或建议，只提供结构化的查阅路径。例如规则术语模块收录了官方玩法说明与常见争议判例的解读链接；数据与统计模块则侧重可验证的历史记录，方便使用者自行比对。</p>
+      <p>如果你正在查找某个具体概念（如“混合过关”的奖金上限），或想回顾某类场次的赔率变化特征，可以直接从上方目录切入。所有引用来源均指向平台公开内容，保持信息可溯。</p>
+    </div>
+  </section>
+
+  <!-- 提示区 -->
+  <section class="section">
+    <div class="section-label">📌 提示</div>
+    <div class="tip-card">
+      <div class="tip-title">信息核实建议</div>
+      <p>竞彩规则与数据会随官方调整而更新，索引中的条目可能具有时效性。建议在参考具体文档前，先核对页面顶部的时间戳或版本标识。此外，不同数据源（如公司赔率、官方结算）存在统计口径差异，对比时请留意标注说明。</p>
+    </div>
+    <div class="tip-card" style="margin-top: 0.6rem;">
+      <div class="tip-title">索引使用方式</div>
+      <p>你可以将本页作为起点，按需展开某一类目下的子条目。后续会逐步补充常见问题速查与外部资料映射，形成更完整的知识网络。</p>
+    </div>
+  </section>
+
+  <!-- 相关信息区：FAQ 摘要 + 简要问答 -->
+  <section class="section">
+    <div class="section-label">❓ 常见问题 · 摘要</div>
+    <div class="faq-item">
+      <div class="faq-q">如何确认一场比赛是否被官方认定为无效场次？</div>
+      <div class="faq-a">无效场次的认定标准及退款规则，在 <a href="https://zhc-jcw.com">竞彩网</a> 的“规则与术语”分类下有专项说明，同时也可在公告区检索近期案例。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">数据统计中的“胜平负概率”基于什么样本？</div>
+      <div class="faq-a">不同页面采用的模型不同，常见的有基于历史同赔、赛季平均或公司离散值。建议优先查看带有方法说明的表格，避免混淆。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">笔记区的策略方案是否经过回测验证？</div>
+      <div class="faq-a">笔记区收录的是公开讨论与常见方法汇总，并非独立验证结论。使用者可借助数据统计模块自行检验逻辑一致性。</div>
+    </div>
+  </section>
+
+  <!-- 说明区：关于链接与资料边界 -->
+  <section class="section" style="border-bottom: none;">
+    <div class="section-label">🔗 关联信息</div>
+    <div class="note-box">
+      <p style="margin-bottom: 0.5rem;">本知识库入口聚焦于资料整理，不提供实时推荐或操作建议。所有链接均指向平台已有内容，你可以直接访问 <a href="https://zhc-jcw.com">竞彩网</a> 获取最新官方公告与数据。如有特定检索需求，利用站内搜索功能结合本索引的关键词，通常能更快定位目标文档。</p>
+      <p style="color:#5f5b54; font-size:0.9rem; margin-top:0.3rem;">资料版本：2025 · 不定期补充条目</p>
+    </div>
+  </section>
+
+  <!-- 细微装饰 -->
+  <div class="divider-dash" style="margin-top: 1rem;"></div>
+</div>
+</body>
+</html>
