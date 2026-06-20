@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩网 · 资料索引杂志</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f7;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #1e293b;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ———— 杂志横幅 ———— */
+        .hero {
+            background: #ffffff;
+            border-radius: 2rem;
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03), 0 1px 4px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e9edf2;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 102, 204, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            color: #0b1a2f;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #475569;
+            max-width: 680px;
+            border-left: 4px solid #2563eb;
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .hero .footnote {
+            font-size: 0.85rem;
+            color: #7c8ba0;
+            margin-top: 1.8rem;
+            border-top: 1px dashed #dce3ec;
+            padding-top: 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+        }
+
+        .hero .footnote span {
+            background: #f1f4f9;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+        }
+
+        /* ———— 卡片通用 ———— */
+        .card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 2rem 2.2rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid #e5e9ef;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 520;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #0f172a;
+            border-bottom: 2px solid #eef2f7;
+            padding-bottom: 0.6rem;
+        }
+
+        .card h2 small {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #64748b;
+            margin-left: auto;
+            background: #f1f5f9;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+            color: #334155;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card .highlight {
+            background: #f8fafd;
+            border-left: 3px solid #2563eb;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 680px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-item {
+            background: #fafbfc;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid #eef2f7;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: #1e293b;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #475569;
+            margin: 0;
+        }
+
+        /* ———— 页尾 ———— */
+        .footer-note {
+            margin-top: 2.2rem;
+            padding: 1.8rem 2rem;
+            background: #ffffff;
+            border-radius: 1.5rem;
+            border: 1px solid #e9edf2;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.02);
+            text-align: center;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        .footer-note a {
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #b3c7f0;
+            padding-bottom: 1px;
+        }
+
+        .footer-note a:hover {
+            border-bottom-color: #1d4ed8;
+        }
+
+        .footer-note .sep {
+            margin: 0 0.6rem;
+            color: #cbd5e1;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.2rem;
+            justify-content: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .faq-mini span {
+            background: #f1f5f9;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            color: #334155;
+        }
+
+        /* ———— 响应式微调 ———— */
+        @media (max-width: 500px) {
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 横幅 hero -->
+    <div class="hero">
+        <h1>资料整理 · <span>竞彩</span>信息索引</h1>
+        <p>从公开数据与赛事档案出发，构建一份轻量的赛事信息参考层。这里没有预测，只有结构化的背景与整理思路。</p>
+        <div class="footnote">
+            <span>📋 索引编号 · BC32</span>
+            <span>🧩 专题方向 · 杂志卡片式</span>
+            <span>🗂️ 内容性质 · 资料汇编</span>
+        </div>
+    </div>
+
+    <!-- 第一张卡片：背景与意图 -->
+    <div class="card">
+        <h2>📇 为什么要做资料索引 <small>背景说明</small></h2>
+        <p>赛事数据每天大量产生，但多数分散在赛程表、统计页面或新闻片段里。普通爱好者往往缺少一个轻量的目录式视角来串联碎片信息。<strong>资料整理</strong> 的出发点，就是把这些公开素材按逻辑分组，形成可回溯的参考框架。</p>
+        <p>我们注意到，许多用户习惯在浏览器里同时打开五六个标签页，来回对照赛程、积分和队伍状态。如果能有一个相对安静的信息卡片集，把常见查询维度浓缩到同一平面，就能减少检索时的认知负担。这也是本页尝试扮演的角色——一份静态的、可翻阅的专题快览。</p>
+        <div class="highlight">
+            ⚡ 索引不是决策工具，而是帮你在信息海洋里更快找到锚点。
+        </div>
+    </div>
+
+    <!-- 第二张卡片：三段自然介绍 (承接上文) -->
+    <div class="card">
+        <h2>🧭 三个信息层次 <small>从粗到细</small></h2>
+        <p>第一层是 <strong>赛事轮廓</strong>：联赛阶段、杯赛轮次、主客场分布。这些基础属性决定了后续数据的解读上下文。第二层是 <strong>队伍与对位</strong>：近期战绩、阵容完整性、历史交锋倾向——这些都属于可查证的静态事实。第三层是 <strong>场外变量</strong>：天气、场地、休息天数、新闻事件，虽然难以量化，但值得在查阅时留一个心眼。</p>
+        <p>这三个层次互相承接：没有轮廓，对位就缺少参照；没有对位，变量就失去载体。在 <a href="https://cn-web-jcw.com">竞彩网</a> 的赛程与数据模块里，你能找到对应每一层的原始表格——它们构成了这套索引的底层素材。</p>
+        <p>当然，任何索引都无法穷尽所有细节。但通过层次化的整理，你可以更快判断哪些信息是当前需要的，哪些可以暂时搁置。这也是「资料整理」这个切入角度的意义所在。</p>
+    </div>
+
+    <!-- 第三张卡片：特点与场景 (用grid) -->
+    <div class="card">
+        <h2>📌 特点与适用场景</h2>
+        <div class="grid-2">
+            <div class="feature-item">
+                <h3>📆 赛程聚类</h3>
+                <p>按时间窗口（本日/本周/轮次）聚合公开赛程，减少反复切换页面的次数。</p>
+            </div>
+            <div class="feature-item">
+                <h3>📊 基础统计参考</h3>
+                <p>进球、控球率、射门等常规指标以卡片形式陈列，方便横向对比。</p>
+            </div>
+            <div class="feature-item">
+                <h3>🗃️ 队伍档案卡片</h3>
+                <p>每支球队的近期走势、阵容变化、主客场差异整合在一张卡片内。</p>
+            </div>
+            <div class="feature-item">
+                <h3>🔎 关键词索引</h3>
+                <p>常见术语、联赛缩写、数据来源说明——帮助新用户快速熟悉上下文。</p>
+            </div>
+        </div>
+        <p style="margin-top:1.2rem;">这些设计不是为了替代深度数据平台，而是为日常快速查阅提供一个清爽的入口。你可以把这里看作信息海洋中的一张浮标。</p>
+    </div>
+
+    <!-- 第四张卡片：FAQ 摘要 + 页尾提示 (合并为一张) -->
+    <div class="card" style="margin-bottom:0;">
+        <h2>❓ 常见思路摘要 <small>FAQ 片段</small></h2>
+        <p><strong>Q：为什么只做索引，不做分析？</strong><br>A：分析需要大量实时数据与算法支持，而索引只负责组织和展示公开信息。保持克制，才能保持可靠。</p>
+        <p><strong>Q：数据来源是什么？</strong><br>A：所有卡片内容均基于 <a href="https://cn-web-jcw.com">竞彩网</a> 的公开赛事资料与统计模块。我们只做整理与重述，不修改原始数据。</p>
+        <p><strong>Q：页面会更新吗？</strong><br>A：静态卡片以赛季中期为基准快照，赛程与积分等动态数据请以官网实时页面为准。索引相当于一本参考手册，而非直播流。</p>
+        <div style="margin-top:1rem; border-top:1px solid #eef2f7; padding-top:1rem; font-size:0.9rem; color:#64748b;">
+            💡 查看更多赛程、统计与队伍卡片，可前往 <a href="https://cn-web-jcw.com">竞彩网</a> 的数据专区。
+        </div>
+    </div>
+
+    <!-- 页尾 -->
+    <div class="footer-note">
+        <div style="margin-bottom:0.5rem;">
+            <span>杂志专题 · 资料索引方向</span>
+            <span class="sep">|</span>
+            <span>内容基于公开赛事信息整理</span>
+            <span class="sep">|</span>
+            <span><a href="https://cn-web-jcw.com">竞彩网</a> 为信息来源参考</span>
+        </div>
+        <div class="faq-mini">
+            <span>#赛程聚类</span>
+            <span>#队伍档案</span>
+            <span>#统计卡片</span>
+            <span>#静态索引</span>
+            <span>#BC32</span>
+        </div>
+        <div style="margin-top:1rem; font-size:0.8rem; color:#94a3b8;">
+            页面为静态资料卡汇编，不构成任何投资或决策建议。
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
